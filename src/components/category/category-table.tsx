@@ -10,9 +10,6 @@ import {
   } from "@/components/ui/table";
   
   import { CategoryProps } from "@/types/category-types";
-import { DropdownMenu, DropdownMenuSeparator, DropdownMenuLabel, DropdownMenuItem, DropdownMenuContent, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import { Button } from "../ui/button";
-import { Menu } from "lucide-react";
 import UpdateCategory from "./update-category";
 import DeleteCategoryDrawer from "./delete-category";
   
