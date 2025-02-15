@@ -16,7 +16,6 @@ import { Member } from "@/types/member-types";
 
 const Overview = () => {
   const {overviewStats, isFetchingOverviewStats} = UseOverview();
-  console.log(overviewStats.data);
 
   const Data = overviewStats?.data;
   const tableData = Data?.timeBasedInsights?.membersThisMonth;
