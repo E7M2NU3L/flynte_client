@@ -55,6 +55,7 @@ const CreateMember = () => {
             AppErr(error);
         } finally {
             SetOpen(false);
+            form.reset();
         }
     };
   return (

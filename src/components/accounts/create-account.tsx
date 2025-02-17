@@ -17,6 +17,7 @@ import {
     SelectValue,
   } from "@/components/ui/select";
 import { toast } from '@/hooks/use-toast'
+import { useState } from 'react';
 
 const CreateAccountDialog = ({memberId} : {
     memberId : string,
@@ -35,6 +36,8 @@ const CreateAccountDialog = ({memberId} : {
 
     const {useCreateAccount} = useAccount();
     const createMutation = useCreateAccount();
+
+    const [open, setOpen] = useState<boolean>(false);
     
     const onSubmit = async (values : CreateAccountType) => {
         try {
@@ -53,10 +56,12 @@ const CreateAccountDialog = ({memberId} : {
             }
         } catch (error) {
             AppErr(error);
+            form.reset();
+            setOpen(false);
         }
     };
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
             <Button variant={"default"} size={"sm"}>
                 <PlusCircle className="w-4 h-4 mr-1" />

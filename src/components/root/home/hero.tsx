@@ -1,47 +1,62 @@
-import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils"; // Assuming `cn` is your utility for className concatenation
 import { Link } from "react-router-dom";
+import Cylinder from '@/assets/cylinder.png';
+import Noodle from '@/assets/noodle.png'; 
+import {motion, useScroll, useTransform} from 'framer-motion';
+import { useRef } from "react";
 
 const Hero = () => {
+  const heroRef = useRef(null);
+  const {scrollYProgress} = useScroll({
+    target : heroRef,
+    offset : ['start end', 'end start']
+  });
+  const translateY = useTransform(scrollYProgress, [0,1], [150, -150]);
+  const subtitle = "Track expenses, manage family budgets, and get AI-driven insights—all in one place. Build a stronger, more transparent financial future together with Flynte.";
   return (
-    <div className="relative min-h-[90vh] overflow-hidden px-4 md:px-0 max-w-7xl mx-auto">
-      {/* Background Pattern */}
-      <AnimatedGridPattern
-        numSquares={30}
-        maxOpacity={0.3}
-        duration={3}
-        repeatDelay={1}
-        className={cn(
-          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-          "absolute inset-0 h-full w-full skew-y-12"
-        )}
-      />
-      {/* Hero Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-[90vh] h-full">
-        <main className="flex flex-col justify-center gap-3 items-center text-center max-w-2xl mx-auto">
-          <h1 className="text-3xl md:text-6xl font-semibold tracking-tight leading-tight text-foreground">
-            Flynte -- Ease your Financial Tracking with Family
-          </h1>
-          <p className="text-lg text-muted-foreground leading-tight tracking-tight font-medium">
-          Track Budgets, Manage Transactions, and Gain Insights with a Unified Financial Management Solution.
-          </p>
+    <main ref={heroRef} className="bg-gradient-to-tr from-primary/70 via-transparent to-transparent">
+      <div className="min-h-[90vh] px-4 md:px-0 gap-12 w-full grid grid-cols-1 md:grid-cols-2  text-center md:text-start max-w-7xl mx-auto pb-12">
+      <section className="pt-12 space-y-4 place-content-center max-w-xl">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight fonr-semibold bg-gradient-to-b from-foreground to-primary bg-clip-text text-transparent">Smart <span className="bg-clip-text bg-gradient-to-tr from-primary via-violet-600 to-purple-600 text-transparent">Family Finance,</span> Simplified</h1>
+        <p className="text-[22px] leading-[30px] tracking-tight text-[#010E3D]">{subtitle}</p>
 
-          <main className="flex flex-row justify-center items-center gap-4 text-center">
-            <Button variant={"default"} size={"sm"} asChild>
-              <Link to={"/login"}>
-                Get Started
-              </Link>
-            </Button>
-            <Button variant={"outline"} size={"sm"} asChild>
-              <Link to={"/register"}>
-                Start for Free
-              </Link>
-            </Button>
-          </main>
+        <main className="flex flex-row gap-4 justify-center items-center md:justify-start">
+          <Button asChild variant={"default"} size={"sm"}>
+            <Link to={"/sign-in"}>
+              Get Started
+            </Link>
+          </Button>
+
+          <Button asChild variant={"outline"} size={"sm"}>
+            <Link to={"/pricing"}>
+              Learn More
+            </Link>
+          </Button>
         </main>
-      </div>
+      </section>
+      <section className="place-content-center relative">
+        <div className="relative">
+        <motion.img
+          animate={{
+            translateY: [-20,20],
+          }}
+          transition={{
+            repeat: Infinity,
+            repeatType : "mirror",
+            duration : 3,
+            ease:"easeInOut"
+          }}
+          src="/hero.png" alt="hero1" className="h-full w-full" /> 
+        </div>
+        <motion.img src={Cylinder} alt="cylinder" style={{
+          translateY : translateY
+        }} className="hidden md:block -top-8 -left-32 absolute h-[220px] w-[220px]" />
+        <motion.img src={Noodle} style={{
+          translateY : translateY
+        }} alt="cylinder" className="hidden md:block top-[524px] left-[448px] rotate-[300deg] absolute h-[220px] w-[220px]" />
+      </section>
     </div>
+    </main>
   );
 };
 

@@ -1,11 +1,11 @@
 import BlogCards from "@/components/root/blogs/blog-cards"
-import Cta from "@/components/root/home/cta"
+import { CallToAction } from "@/components/root/home/CallToAction"
 
 const Blogs = () => {
   return (
     <div>
         <BlogCards />
-        <Cta />
+        <CallToAction />
     </div>
   )
 }

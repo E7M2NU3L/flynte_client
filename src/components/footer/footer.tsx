@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 
 const Footer = () => {
+  const getFullyear = new Date().getFullYear();
   return (
     <footer className="">
-  <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
+  <div className="mx-auto max-w-full space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
         <Link to={"/"} className="flex flex-row items-center gap-1">
@@ -11,17 +12,17 @@ const Footer = () => {
           <h1 className="text-3xl font-semibold tracking-tight text-foreground">Flynte</h1>
         </Link>
 
-        <p className="mt-4 max-w-xs text-xs font-light text-gray-500">
-        Flynte is an intelligent SaaS platform designed for families to seamlessly manage and track their finances. Add multiple family profiles, monitor transactions, and gain AI-powered insights for smarter financial planning. Simplify your family’s financial life and build a stronger, more transparent future together
+        <p className="mt-4 max-w-xs text-xs font-light text-muted-foreground">
+        Flynte is the smart way for families to manage finances effortlessly. Track transactions, add family profiles, and get AI-powered insights for better financial planning—all in one seamless platform.
         </p>
 
         <ul className="mt-8 flex gap-6">
           <li>
-            <a
-              href="#"
+            <Link
+              to={"https://www.facebook.com/profile.php?id=100074306813233"}               
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-muted-foreground transition hover:opacity-75"
             >
               <span className="sr-only">Facebook</span>
 
@@ -32,15 +33,15 @@ const Footer = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="#"
+            <Link
+              to={"https://www.instagram.com/emmanuel_lothbrok"}               
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-muted-foreground transition hover:opacity-75"
             >
               <span className="sr-only">Instagram</span>
 
@@ -51,15 +52,15 @@ const Footer = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="#"
+            <Link
+              to={"https://x.com/aemmanuel_codes"}               
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-muted-foreground transition hover:opacity-75"
             >
               <span className="sr-only">Twitter</span>
 
@@ -68,15 +69,15 @@ const Footer = () => {
                   d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
                 />
               </svg>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="#"
+            <Link
+              to={"https://github.com/E7M2NU3L"}               
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-muted-foreground transition hover:opacity-75"
             >
               <span className="sr-only">GitHub</span>
 
@@ -87,15 +88,15 @@ const Footer = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="#"
+            <Link
+              to={"https://worlddelaemmanuel.vercel.app"}               
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-muted-foreground transition hover:opacity-75"
             >
               <span className="sr-only">Dribbble</span>
 
@@ -106,99 +107,107 @@ const Footer = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
         <div>
-          <p className="font-medium text-gray-900">Services</p>
+          <p className="font-medium text-foreground">Quick Links</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> 1on1 Coaching </a>
+              <Link to="#" className="text-muted-foreground transition hover:opacity-75"> Home </Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Company Review </a>
+              <Link to="#" className="text-muted-foreground transition hover:opacity-75"> Pricing </Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
+              <Link to="#" className="text-muted-foreground transition hover:opacity-75"> Contact Us </Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> HR Consulting </a>
+              <Link to="#" className="text-muted-foreground transition hover:opacity-75"> Login </Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> SEO Optimisation </a>
+              <Link to="#" className="text-muted-foreground transition hover:opacity-75"> Register </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="font-medium text-gray-900">Company</p>
+          <p className="font-medium text-foreground">Products</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> About </a>
+              <Link to="https://xcontour.vercel.app" className="text-muted-foreground transition hover:opacity-75">Contract Management Tool</Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Meet the Team </a>
+              <Link to="https://voiquiz.vercel.app" className="text-muted-foreground transition hover:opacity-75">AI Tutoring System</Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
+              <Link to="https://etracks.vercel.app" className="text-muted-foreground transition hover:opacity-75"> Employee Management System </Link>
+            </li>
+
+            <li>
+              <Link to="https://zyberquip.vercel.app" className="text-muted-foreground transition hover:opacity-75"> Biomedical Automation Tool </Link>
+            </li>
+
+            <li>
+              <Link to="https://heftix.vercel.app" className="text-muted-foreground transition hover:opacity-75"> Psycologist CRM Tool </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="font-medium text-gray-900">Helpful Links</p>
+          <p className="font-medium text-foreground">Services</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Contact </a>
+              <Link to="https://best-ngo-2k25.vercel.app" className="text-muted-foreground transition hover:opacity-75"> Awards & Honors - Registration</Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> FAQs </a>
+              <Link to="https://nipix-client-test.vercel.app" className="text-muted-foreground transition hover:opacity-75"> Nipix Technology - ELearning</Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Live Chat </a>
+              <Link to="https://kryte.vercel.app" className="text-muted-foreground transition hover:opacity-75"> ECommerce Guitar Shop </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="font-medium text-gray-900">Legal</p>
+          <p className="font-medium text-foreground">Legal</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Accessibility </a>
+              <Link to="/privacy-policy" className="text-muted-foreground transition hover:opacity-75"> Privacy Policy </Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Returns Policy </a>
+              <Link to="/terms-conditions" className="text-muted-foreground transition hover:opacity-75">Terms & Conditions</Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Refund Policy </a>
+              <Link to="/cancellation" className="text-muted-foreground transition hover:opacity-75"> Cancellation and Refund </Link>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Hiring Statistics </a>
+              <Link to="/shipping" className="text-muted-foreground transition hover:opacity-75">Shipping and Delivery </Link>
             </li>
           </ul>
         </div>
       </div>
     </div>
 
-    <p className="text-xs text-gray-500">&copy; 2022. Company Name. All rights reserved.</p>
+    <p className="text-xs text-muted-foreground">&copy; {getFullyear}. Jehr Tech Solutions - Flynte. All rights reserved.</p>
   </div>
 </footer>
   )

@@ -1,4 +1,4 @@
-import Cta from "@/components/root/home/cta"
+import { CallToAction } from "@/components/root/home/CallToAction"
 import Faq from "@/components/root/pricing/faq"
 import PricingCards from "@/components/root/pricing/price-cards"
 
@@ -7,7 +7,7 @@ const Pricing = () => {
     <div>
         <PricingCards />
         <Faq />
-        <Cta />
+        <CallToAction />
     </div>
   )
 }

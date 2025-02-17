@@ -9,7 +9,7 @@ const Navbar = () => {
   const authInfo = useSelector((state : RootState) => state.auth);
   const {userInfo} = useAuth();
   return (
-    <div className="min-h-[10vh] flex flex-row justify-between px-4 items-center">
+    <div className="min-h-[10vh] z-10 flex flex-row justify-between px-4 items-center">
         <Link to={"/"} className="flex flex-row items-center gap-1">
           <img src="/logo.png" className="w-12 h-12 object-contain" alt="logo" />
           <h1 className="text-2xl font-semibold tracking-tight text-foreground">Flynte</h1>
