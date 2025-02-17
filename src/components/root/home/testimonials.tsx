@@ -7,7 +7,9 @@ import avatar6 from "@/assets/avatar-6.png";
 import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
+import React from "react";
 import { twMerge } from "tailwind-merge";
+import {motion} from 'framer-motion';
 
 const testimonials = [
   {
@@ -80,31 +82,44 @@ export const Testimonials = () => {
           <p className="text-center text-[22px] leading-[30px] tracking-tight text-muted-foreground mt-5">From a simple finance tracker to integrations and AI support features, our app has become one of the favourites amongst the financially alertive families..</p>
         </main>
 
-        <main className="flex justify-center gap-6">
-          <Card testimonials={firstColumn} />
-          <Card testimonials={secondColumn} className="hidden md:flex" />
-          <Card testimonials={thirdColumn} className="hidden lg:flex" />
+        <main className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[738px] overflow-hidden">
+          <Card testimonials={firstColumn} duration={10} />
+          <Card testimonials={secondColumn} className="hidden md:block" duration={20} />
+          <Card testimonials={thirdColumn} className="hidden lg:block" duration={15} />
         </main>
       </div>
     </div>
   );
 };
 
-const Card = (props : {testimonials : typeof testimonials, className? : string}) => {
+const Card = (props : {testimonials : typeof testimonials, className? : string, duration? : number}) => {
   return (
-    <div className={twMerge("flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]", props.className)}>
-          {props.testimonials.map(({text, imageSrc, name, username}, index) => (
-            <div className="p-10 rounded-3xl w-full shadow-[0_7px_14px_#EAEAEA] dark:shadow-primary border border-[#F1F1F1] dark:border-none" key={index}>
-              <div>{text}</div>
-              <div className="flex items-center gap-2 mt-5">
-                <img src={imageSrc} alt={name} className="rounded-full w-10 h-10" />
-                <div>
-                  <div className="font-medium tracking-tight leading-[20px]">{name}</div>
-                  <div className="leading-5 tracking-tight">{username}</div>
-                </div> 
-              </div>
-            </div>
+    <main className={props.className}>
+      <motion.div animate={{
+        translateY : "-50%",
+      }} transition={{
+        repeat : Infinity,
+        ease : "linear",
+        repeatType : 'loop',
+        duration : props.duration ?? 20
+      }} className={twMerge("flex flex-col gap-6 -translate-y-1/2 pb-6")}>
+          {[...new Array(2)].fill(0).map((_, index) => (
+            <React.Fragment key={index}>
+                {props.testimonials.map(({text, imageSrc, name, username}, index) => (
+                  <div className="p-10 rounded-3xl w-full shadow-[0_7px_14px_#EAEAEA] dark:shadow-primary border border-[#F1F1F1] dark:border-none" key={index}>
+                    <div>{text}</div>
+                    <div className="flex items-center gap-2 mt-5">
+                      <img src={imageSrc} alt={name} className="rounded-full w-10 h-10" />
+                      <div>
+                        <div className="font-medium tracking-tight leading-[20px]">{name}</div>
+                        <div className="leading-5 tracking-tight">{username}</div>
+                      </div> 
+                    </div>
+                  </div>
+                ))}
+            </React.Fragment>
           ))}
-        </div>
+        </motion.div>
+    </main>
   )
 }

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { CheckIcon } from "lucide-react";
-import { twMerge } from "tailwind-merge"; 
+import { twMerge } from "tailwind-merge";
+import {motion} from 'framer-motion'; 
 
 const pricingTiers = [
   {
@@ -10,10 +11,11 @@ const pricingTiers = [
     popular: false,
     inverse: false,
     features: [
-      "Up to 5 project members",
-      "Unlimited tasks and projects",
-      "2GB storage",
-      "Integrations",
+      "Up to 2 family profiles",
+      "Track income & expenses",
+      "Basic budgeting tools",
+      "AI-powered financial insights",
+      "Limited transaction history (3 months)",
       "Basic support",
     ],
   },
@@ -24,13 +26,14 @@ const pricingTiers = [
     popular: true,
     inverse: true,
     features: [
-      "Up to 50 project members",
-      "Unlimited tasks and projects",
-      "50GB storage",
-      "Integrations",
+      "Up to 5 family profiles",
+      "Unlimited income & expense tracking",
+      "Advanced budgeting tools",
+      "AI-powered financial forecasting",
+      "Full transaction history",
+      "Bank account & credit card integration",
+      "Automated bill reminders",
       "Priority support",
-      "Advanced support",
-      "Export support",
     ],
   },
   {
@@ -40,19 +43,21 @@ const pricingTiers = [
     popular: false,
     inverse: false,
     features: [
-      "Up to 5 project members",
-      "Unlimited tasks and projects",
-      "200GB storage",
-      "Integrations",
+      "Unlimited family profiles",
+      "Comprehensive budgeting & financial planning",
+      "AI-driven savings & investment recommendations",
+      "Custom financial goals & tracking",
+      "Full transaction history with export capabilities",
+      "Bank account & credit card integration",
+      "Automated bill reminders & payment scheduling",
+      "Shared family financial dashboard",
+      "Advanced security & fraud alerts",
       "Dedicated account manager",
-      "Custom fields",
-      "Advanced analytics",
-      "Export capabilities",
-      "API access",
-      "Advanced security features",
+      "API access for financial data",
     ],
   },
 ];
+
 
 export const Pricing = () => {
   return (
@@ -63,7 +68,16 @@ export const Pricing = () => {
 
         <div className="flex flex-col mt-10 md:flex-row gap-6 items-center">
           {pricingTiers.map(({title, monthlyPrice, buttonText, popular, inverse, features}, index) => (
-            <div className={twMerge("p-10 rounded-3xl w-full shadow-[0_7px_14px_#EAEAEA] dark:shadow-primary border border-[#F1F1F1] dark:border-none", inverse === true && 'border-black bg-black text-white')} key={index}>
+            <motion.div initial={{
+              y: 40,
+              opacity: 0,
+            }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.5, delay: index * 0.3 }
+              }}
+            className={twMerge("p-10 rounded-3xl w-full shadow-[0_7px_14px_#EAEAEA] dark:shadow-primary border border-[#F1F1F1] dark:border-none", inverse === true && 'border-black bg-black text-white')} key={index}>
               <div className="flex justify-between">
               <h3 className={twMerge("text-lg font-bold text-foreground", inverse === true && 'text-white')}>{title}</h3>
               {popular && (
@@ -79,13 +93,13 @@ export const Pricing = () => {
               <Button className="w-full mt-[30px]" variant={"default"} size={"sm"}>{buttonText}</Button>
               <ul className="flex flex-col gap-5 mt-[32px]">
                 {features.map(feature => (
-                  <li key={feature} className="flex flex-row gap-4 text-sm items-center">
+                  <li key={feature} className="flex flex-row gap-4 text-xs items-center">
                     <CheckIcon />
                     <span>{feature}</span>
                     </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,7 +1,15 @@
 import Pyramid from '@/assets/pyramid.png';
 import Tube from '@/assets/tube.png';
+import { useScroll, useTransform, motion } from 'framer-motion';
+import { useRef } from 'react';
 
 export const ProductShowcase = () => {
+  const heroRef = useRef(null);
+  const {scrollYProgress} = useScroll({
+    target : heroRef,
+    offset : ['start end', 'end start']
+  });
+  const translateY = useTransform(scrollYProgress, [0,1], [150, -150]);
   return <div className="bg-gradient-to-b from-background to-primary px-4 py-24 min-h-screen">
     <div className="container">
       <div className="max-w-3xl mx-auto">
@@ -14,8 +22,12 @@ export const ProductShowcase = () => {
 
       <main className="relative">
         <img src="/product.png" alt="product" className="mt-10" />
-        <img src={Pyramid} alt="pyramid" className="absolute h-[200px] w-[200px] md:h-[262px] md:w-[262px] -right-36 -top-32" />
-        <img src={Tube} alt="pyramid" className="md:h-[248px] h-[150px] absolute -left-36 bottom-24" />
+        <motion.img style={{
+          translateY : translateY
+        }} src={Pyramid} alt="pyramid" className="absolute h-[200px] w-[200px] md:h-[262px] md:w-[262px] -right-36 -top-32" />
+        <motion.img style={{
+          translateY : translateY
+        }} src={Tube} alt="pyramid" className="md:h-[248px] h-[150px] absolute -left-36 bottom-24" />
       </main>
     </div>
   </div>;
